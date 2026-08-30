@@ -1,12 +1,14 @@
-```html
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>RecoverX — Payment Recovery Control Center</title>
+<title>RecoverX | Payment Recovery</title>
+<link rel="icon" type="image/png" href="logo.png">
 
 <style>
 
@@ -17,30 +19,23 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
-
     --bg:#F4F6F5;
     --bg-stripe:#E9EEEB;
     --panel:#FFFFFF;
     --ink:#14231B;
     --ink-soft:#607067;
     --line:#D2DBD5;
-
     --recover:#087443;
     --recover-bg:#E5F5EC;
-
     --pending:#A16A00;
     --pending-bg:#FFF3D9;
-
     --block:#B52D25;
     --block-bg:#FCE7E4;
-
     --detect:#315B91;
     --detect-bg:#E7EEF8;
-
     --tape-bg:#0B1711;
     --tape-fg:#92E7B0;
     --tape-fg-dim:#527B62;
-
     --radius:12px;
 }
 
@@ -53,29 +48,15 @@ html{
 }
 
 body{
-
     margin:0;
-
-    background:
-        repeating-linear-gradient(
-            180deg,
-            var(--bg-stripe) 0px,
-            var(--bg-stripe) 26px,
-            var(--bg) 26px,
-            var(--bg) 52px
-        );
-
+    background:var(--bg);
     color:var(--ink);
-
     font-family:'DM Sans',sans-serif;
-
     -webkit-font-smoothing:antialiased;
 }
 
 h1,h2,h3{
-
     font-family:'Space Grotesk',sans-serif;
-
     margin:0;
 }
 
@@ -93,19 +74,13 @@ a{
 }
 
 :focus-visible{
-
     outline:3px solid var(--detect);
-
     outline-offset:2px;
 }
 
 .wrap{
-
     max-width:1180px;
-
     margin:0 auto;
-
-    /* REDUCED BOTTOM SPACE */
     padding:30px 20px 25px;
 }
 
@@ -115,116 +90,74 @@ a{
    ========================================================= */
 
 header{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:flex-end;
-
     flex-wrap:wrap;
-
     gap:18px;
-
     margin-bottom:26px;
-
     border-bottom:3px double var(--ink);
-
     padding-bottom:18px;
 }
 
 .brand{
-
     display:flex;
-
     align-items:center;
-
     gap:12px;
 }
 
 .brand h1{
-
     font-size:clamp(30px,4vw,44px);
-
     letter-spacing:-1px;
-
     font-weight:700;
 }
 
 .brand .stamp{
-
     font-family:'JetBrains Mono',monospace;
-
     font-size:10px;
-
     letter-spacing:1.4px;
-
     border:1.5px solid var(--recover);
-
     color:var(--recover);
-
     padding:4px 9px;
-
     border-radius:4px;
-
     text-transform:uppercase;
-
     transform:rotate(-2deg);
 }
 
 header p{
-
     margin:8px 0 0;
-
     color:var(--ink-soft);
-
     font-size:14px;
-
     max-width:650px;
-
     line-height:1.6;
 }
 
 .ledger-no{
-
     font-family:'JetBrains Mono',monospace;
-
     font-size:11px;
-
     color:var(--ink-soft);
-
     text-align:right;
-
     line-height:1.8;
 }
 
 .ledger-no span{
-
     display:block;
 }
 
 .api-status{
-
     display:inline-flex;
-
     align-items:center;
-
     gap:7px;
 }
 
 .api-status .dot{
-
     width:8px;
-
     height:8px;
-
     border-radius:50%;
-
     background:var(--block);
 }
 
 .api-status.up .dot{
-
     background:var(--recover);
 }
 
@@ -234,115 +167,75 @@ header p{
    ========================================================= */
 
 .pipeline{
-
     background:var(--panel);
-
     border:1px solid var(--line);
-
     border-radius:var(--radius);
-
     padding:22px 18px 18px;
-
     margin-bottom:22px;
-
     box-shadow:0 1px 0 var(--line);
 }
 
 .pipeline-top{
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
-
     margin-bottom:20px;
-
     flex-wrap:wrap;
-
     gap:8px;
 }
 
 .pipeline-top h2{
-
     font-size:15px;
-
     text-transform:uppercase;
-
     letter-spacing:1.4px;
-
     color:var(--ink-soft);
 }
 
 .now-processing{
-
     font-family:'JetBrains Mono',monospace;
-
     font-size:12px;
-
     color:var(--detect);
-
     min-height:18px;
 }
 
 .now-processing.active::before{
-
     content:"● ";
-
     color:var(--recover);
-
     animation:blink 1s infinite;
 }
 
 @media (prefers-reduced-motion:reduce){
-
     .now-processing.active::before{
-
         animation:none;
     }
 }
 
 @keyframes blink{
-
     50%{
         opacity:.2;
     }
 }
 
 .stages{
-
     display:flex;
-
     align-items:flex-start;
-
     justify-content:space-between;
-
     gap:4px;
 }
 
 .stage{
-
     flex:1;
-
     text-align:center;
-
     position:relative;
 }
 
 .stage:not(:last-child)::after{
-
     content:"";
-
     position:absolute;
-
     top:19px;
-
     left:56%;
-
     width:88%;
-
     height:2px;
-
     background:
         repeating-linear-gradient(
             90deg,
@@ -352,73 +245,45 @@ header p{
 }
 
 .stage .dot{
-
     width:38px;
-
     height:38px;
-
     border-radius:50%;
-
     border:2px solid var(--line);
-
     background:var(--bg);
-
     display:flex;
-
     align-items:center;
-
     justify-content:center;
-
     margin:0 auto 8px;
-
     font-family:'JetBrains Mono',monospace;
-
     font-weight:600;
-
     color:var(--ink-soft);
-
     position:relative;
-
     z-index:1;
-
     transition:all .25s ease;
 }
 
 .stage.on .dot{
-
     border-color:var(--detect);
-
     background:var(--detect-bg);
-
     color:var(--detect);
 }
 
 .stage.recovered .dot{
-
     border-color:var(--recover);
-
     background:var(--recover-bg);
-
     color:var(--recover);
 }
 
 .stage.blocked .dot{
-
     border-color:var(--block);
-
     background:var(--block-bg);
-
     color:var(--block);
 }
 
 .stage .label{
-
     font-size:11px;
-
     letter-spacing:.7px;
-
     text-transform:uppercase;
-
     color:var(--ink-soft);
 }
 
@@ -428,70 +293,46 @@ header p{
    ========================================================= */
 
 .controls{
-
     display:flex;
-
     gap:10px;
-
     flex-wrap:wrap;
-
     margin:18px 0 22px;
-
     align-items:center;
 }
 
 button{
-
     font-family:'DM Sans',sans-serif;
-
     font-weight:700;
-
     font-size:13px;
-
     border-radius:8px;
-
     padding:11px 18px;
-
     cursor:pointer;
-
     border:1.5px solid var(--ink);
-
     background:var(--ink);
-
     color:white;
-
     transition:
         transform .1s ease,
         opacity .15s ease;
 }
 
 button:hover:not(:disabled){
-
     transform:translateY(-1px);
 }
 
 button:disabled{
-
     opacity:.45;
-
     cursor:not-allowed;
-
     transform:none;
 }
 
 button.secondary{
-
     background:transparent;
-
     color:var(--ink);
 }
 
 button.ghost{
-
     background:transparent;
-
     color:var(--ink-soft);
-
     border-color:var(--line);
 }
 
@@ -501,26 +342,17 @@ button.ghost{
    ========================================================= */
 
 .error-banner{
-
     display:none;
-
     background:var(--block-bg);
-
     color:var(--block);
-
     border:1px solid var(--block);
-
     border-radius:8px;
-
     padding:10px 14px;
-
     font-size:13px;
-
     margin-bottom:16px;
 }
 
 .error-banner.show{
-
     display:block;
 }
 
@@ -530,85 +362,49 @@ button.ghost{
    ========================================================= */
 
 .stats{
-
     display:grid;
-
     grid-template-columns:repeat(6,1fr);
-
     gap:10px;
-
     margin-bottom:22px;
 }
 
 .stat{
-
     background:var(--panel);
-
     border:1px solid var(--line);
-
     border-radius:var(--radius);
-
     padding:14px;
 }
 
 .stat .k{
-
     font-size:10.5px;
-
     text-transform:uppercase;
-
     letter-spacing:.7px;
-
     color:var(--ink-soft);
-
     margin-bottom:7px;
 }
 
-
-/* =========================================================
-   CHANGED NUMBER FONT
-   ========================================================= */
-
 .stat .v{
-
-    /*
-       Changed from JetBrains Mono.
-
-       Inter gives the dashboard numbers a more natural
-       modern fintech look and avoids the "AI generated"
-       monospace appearance.
-    */
-
     font-family:'Inter',sans-serif;
-
     font-size:23px;
-
     font-weight:600;
-
     letter-spacing:-.6px;
-
     font-variant-numeric:tabular-nums;
-
     line-height:1.1;
 }
 
 .stat.risk .v{
-
     color:var(--pending);
 }
 
 .stat.recov .v{
-
     color:var(--recover);
 }
 
 .stat.rate .v{
-
     color:var(--detect);
 }
 
 .stat.esc .v{
-
     color:var(--block);
 }
 
@@ -618,55 +414,36 @@ button.ghost{
    ========================================================= */
 
 .main{
-
     display:grid;
-
     grid-template-columns:1.5fr 1fr;
-
     gap:20px;
-
     align-items:start;
 }
 
 .panel{
-
     background:var(--panel);
-
     border:1px solid var(--line);
-
     border-radius:var(--radius);
-
     overflow:hidden;
 }
 
 .panel-head{
-
     padding:14px 16px;
-
     border-bottom:1px solid var(--line);
-
     display:flex;
-
     justify-content:space-between;
-
     align-items:center;
 }
 
 .panel-head h3{
-
     font-size:14px;
-
     text-transform:uppercase;
-
     letter-spacing:.9px;
 }
 
 .panel-head .count{
-
     font-family:'JetBrains Mono',monospace;
-
     font-size:11px;
-
     color:var(--ink-soft);
 }
 
@@ -676,60 +453,36 @@ button.ghost{
    ========================================================= */
 
 table{
-
     width:100%;
-
     border-collapse:collapse;
-
     font-size:13px;
 }
 
 thead th{
-
     text-align:left;
-
     font-size:10px;
-
     text-transform:uppercase;
-
     letter-spacing:.6px;
-
     color:var(--ink-soft);
-
     padding:9px 12px;
-
     border-bottom:1px solid var(--line);
 }
 
 tbody td{
-
     padding:9px 12px;
-
     border-bottom:1px solid var(--bg-stripe);
-
     vertical-align:middle;
 }
 
 tbody tr:hover{
-
     background:var(--bg-stripe);
-
     cursor:pointer;
 }
 
 td.amt{
-
-    /*
-       Amounts in table now use Inter too,
-       while IDs/status codes remain monospace.
-    */
-
     font-family:'Inter',sans-serif;
-
     font-variant-numeric:tabular-nums;
-
     font-weight:500;
-
     letter-spacing:-.2px;
 }
 
@@ -739,62 +492,43 @@ td.amt{
    ========================================================= */
 
 .badge{
-
     display:inline-block;
-
     font-family:'JetBrains Mono',monospace;
-
     font-size:10px;
-
     padding:3px 8px;
-
     border-radius:20px;
-
     letter-spacing:.3px;
-
     white-space:nowrap;
 }
 
 .badge.RECOVERED{
-
     background:var(--recover-bg);
-
     color:var(--recover);
 }
 
 .badge.UNRECOVERED{
-
     background:var(--pending-bg);
-
     color:var(--pending);
 }
 
 .badge.ESCALATED{
-
     background:var(--block-bg);
-
     color:var(--block);
 }
 
 .badge.PENDING{
-
     background:var(--bg-stripe);
-
     color:var(--ink-soft);
 }
 
 .badge.SUCCESS,
 .badge.NOT_APPLICABLE{
-
     background:var(--detect-bg);
-
     color:var(--detect);
 }
 
 .badge.FAILED{
-
     background:var(--pending-bg);
-
     color:var(--pending);
 }
 
@@ -804,36 +538,25 @@ td.amt{
    ========================================================= */
 
 .row-detail{
-
     display:none;
-
     background:var(--bg);
 }
 
 .row-detail.open{
-
     display:table-row;
 }
 
 .row-detail td{
-
     padding:0;
 }
 
 .row-detail pre{
-
     margin:0;
-
     padding:12px 16px;
-
     font-family:'JetBrains Mono',monospace;
-
     font-size:11px;
-
     line-height:1.6;
-
     color:var(--ink-soft);
-
     white-space:pre-wrap;
 }
 
@@ -843,137 +566,92 @@ td.amt{
    ========================================================= */
 
 .tape-wrap{
-
     background:var(--tape-bg);
-
     border-radius:0 0 var(--radius) var(--radius);
-
     position:relative;
 }
 
 .tape-wrap::before{
-
     content:"";
-
     display:block;
-
     height:8px;
-
     background-image:
         radial-gradient(
             circle,
             var(--bg) 2.5px,
             transparent 2.6px
         );
-
     background-size:16px 8px;
-
     background-position:4px 0;
-
     background-repeat:repeat-x;
-
     background-color:var(--tape-bg);
 }
 
 .tape{
-
-    /*
-       Reduced from 520px to 360px.
-
-       This removes the large blank area underneath
-       the audit activity panel.
-    */
-
     height:360px;
-
     overflow-y:auto;
-
     padding:14px 16px 20px;
-
     font-family:'JetBrains Mono',monospace;
-
     font-size:11.5px;
-
     color:var(--tape-fg);
-
     line-height:1.65;
 }
 
 .tape::-webkit-scrollbar{
-
     width:8px;
 }
 
 .tape::-webkit-scrollbar-thumb{
-
     background:#1c3a2a;
-
     border-radius:4px;
 }
 
 .tape .empty{
-
     color:var(--tape-fg-dim);
 }
 
 .tape .line{
-
     margin-bottom:2px;
-
     opacity:0;
-
     animation:appear .3s ease forwards;
 }
 
 @media (prefers-reduced-motion:reduce){
-
     .tape .line{
-
         animation:none;
-
         opacity:1;
     }
 }
 
 @keyframes appear{
-
     from{
-
         opacity:0;
-
         transform:translateY(3px);
     }
 
     to{
-
         opacity:1;
-
         transform:translateY(0);
     }
 }
 
 .tape .ts{
-
     color:var(--tape-fg-dim);
 }
 
 .tape .ok{
-
     color:#8FE3AC;
 }
 
 .tape .warn{
-
     color:#E3C98F;
 }
 
 .tape .bad{
-
     color:#E38F8F;
 }
 
 .tape .json{
-
     color:#6FA5D8;
 }
 
@@ -983,25 +661,18 @@ td.amt{
    ========================================================= */
 
 .policy{
-
     margin-top:20px;
 }
 
 .policy ul{
-
     margin:0;
-
     padding:14px 16px 16px 32px;
-
     font-size:13px;
-
     color:var(--ink-soft);
-
     line-height:1.75;
 }
 
 .policy li strong{
-
     color:var(--ink);
 }
 
@@ -1011,20 +682,10 @@ td.amt{
    ========================================================= */
 
 .footnote{
-
-    /*
-       Reduced footer spacing so there isn't a large
-       empty section at the bottom of the page.
-    */
-
     margin:14px 0 0;
-
     font-size:11.5px;
-
     color:var(--ink-soft);
-
     text-align:center;
-
     line-height:1.6;
 }
 
@@ -1036,17 +697,14 @@ td.amt{
 @media (max-width:900px){
 
     .main{
-
         grid-template-columns:1fr;
     }
 
     .stats{
-
         grid-template-columns:repeat(2,1fr);
     }
 
     .tape{
-
         height:320px;
     }
 }
@@ -1054,51 +712,40 @@ td.amt{
 @media (max-width:600px){
 
     .wrap{
-
         padding:20px 12px 18px;
     }
 
     .brand{
-
         align-items:flex-start;
-
         flex-direction:column;
-
         gap:8px;
     }
 
     header{
-
         align-items:flex-start;
     }
 
     .ledger-no{
-
         text-align:left;
     }
 
     .stats{
-
         grid-template-columns:1fr 1fr;
     }
 
     .stat{
-
         padding:12px;
     }
 
     .stat .v{
-
         font-size:20px;
     }
 
     .main{
-
         gap:14px;
     }
 
     .tape{
-
         height:300px;
     }
 }
@@ -1110,10 +757,6 @@ td.amt{
 <body>
 
 <div class="wrap">
-
-<!-- ======================================================
-     HEADER
-     ====================================================== -->
 
 <header>
 
@@ -1162,10 +805,6 @@ td.amt{
 
 <div class="error-banner" id="errorBanner"></div>
 
-
-<!-- ======================================================
-     RECOVERY PIPELINE
-     ====================================================== -->
 
 <section class="pipeline">
 
@@ -1275,10 +914,6 @@ td.amt{
 </section>
 
 
-<!-- ======================================================
-     CONTROLS
-     ====================================================== -->
-
 <div class="controls">
 
     <button id="genBtn">
@@ -1302,10 +937,6 @@ td.amt{
 
 </div>
 
-
-<!-- ======================================================
-     METRICS
-     ====================================================== -->
 
 <section class="stats">
 
@@ -1407,16 +1038,8 @@ td.amt{
 </section>
 
 
-<!-- ======================================================
-     MAIN CONTENT
-     ====================================================== -->
-
 <div class="main">
 
-
-    <!-- ==================================================
-         TRANSACTION PANEL
-         ================================================== -->
 
     <div class="panel">
 
@@ -1443,30 +1066,20 @@ td.amt{
                 <tr>
 
                     <th>ID</th>
-
                     <th>Amount</th>
-
                     <th>Status</th>
-
                     <th>Failure Reason</th>
-
                     <th>Recovery</th>
-
                     <th>Attempts</th>
 
                 </tr>
 
             </thead>
 
-
             <tbody id="txBody"></tbody>
 
         </table>
 
-
-        <!-- ==============================================
-             SAFETY
-             ============================================== -->
 
         <div class="policy">
 
@@ -1485,42 +1098,27 @@ td.amt{
             <ul>
 
                 <li>
-
                     <strong>Retry protection:</strong>
-
                     Maximum of 2 recovery attempts per payment
                     before automatic escalation.
-
                 </li>
 
-
                 <li>
-
                     <strong>AI recommends • Policy controls:</strong>
-
                     every recovery action must pass deterministic
                     server-side validation before execution.
-
                 </li>
 
-
                 <li>
-
                     <strong>Low-confidence decisions:</strong>
-
                     unfamiliar failure patterns are blocked and
                     routed directly to human review.
-
                 </li>
 
-
                 <li>
-
                     <strong>Controlled recovery:</strong>
-
                     recovery actions are bounded by the original
                     transaction amount.
-
                 </li>
 
             </ul>
@@ -1529,10 +1127,6 @@ td.amt{
 
     </div>
 
-
-    <!-- ==================================================
-         AUDIT PANEL
-         ================================================== -->
 
     <div class="panel">
 
@@ -1568,10 +1162,6 @@ td.amt{
 
 </div>
 
-
-<!-- ======================================================
-     FOOTER
-     ====================================================== -->
 
 <p class="footnote">
 
@@ -1687,6 +1277,7 @@ td.amt{
                             : ''
                     )
                 );
+
             }
 
 
@@ -1710,6 +1301,7 @@ td.amt{
             ){
 
                 return null;
+
             }
 
 
@@ -1738,6 +1330,7 @@ td.amt{
 
 
             throw err;
+
         }
 
     }
@@ -1750,6 +1343,7 @@ td.amt{
         errorBanner
             .classList
             .add('show');
+
     }
 
 
@@ -1758,6 +1352,7 @@ td.amt{
         errorBanner
             .classList
             .remove('show');
+
     }
 
 
@@ -1815,7 +1410,6 @@ td.amt{
 
 
             renderTable();
-
 
             await refreshMetrics();
 
@@ -2150,17 +1744,13 @@ td.amt{
             ){
 
                 s.classList.add(
-
                     mode === 'blocked'
                         ? 'blocked'
                         :
-
                     mode === 'recovered'
                         ? 'recovered'
                         :
-
                         'on'
-
                 );
 
             }
@@ -2283,7 +1873,6 @@ td.amt{
 
 
             tapeLine(
-
                 '<span class="ts">[' +
                 now() +
                 ']</span> ' +
@@ -2301,7 +1890,6 @@ td.amt{
                 '">' +
                 message +
                 '</span>'
-
             );
 
 
@@ -2341,11 +1929,9 @@ td.amt{
         if(pending.length === 0){
 
             tapeLine(
-
                 '<span class="empty">' +
                 '// no pending failures detected — system is already clear.' +
                 '</span>'
-
             );
 
         }
@@ -2414,13 +2000,11 @@ td.amt{
             catch(e){
 
                 tapeLine(
-
                     '<span class="bad">' +
                     '// recovery halted for ' +
                     t.externalId +
                     ' — backend communication failed.' +
                     '</span>'
-
                 );
 
                 break;
@@ -2446,7 +2030,6 @@ td.amt{
 
 
         tapeLine(
-
             '<span class="ts">[' +
             now() +
             ']</span> ' +
@@ -2454,7 +2037,6 @@ td.amt{
             '<span class="ok">' +
             '— recovery cycle complete —' +
             '</span>'
-
         );
 
 
@@ -2581,5 +2163,6 @@ td.amt{
 </script>
 
 </body>
+
 </html>
-```
+
